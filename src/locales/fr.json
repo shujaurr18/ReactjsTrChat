@@ -1,0 +1,71 @@
+
+{
+    "common": {
+      "chat": "Chat",
+      "discussionRooms": "Discussion Rooms",
+      "profile": "Profil",
+      "announcements": "Annonces",
+      "login": "Connexion",
+      "register": "Inscription",
+      "email": "Email",
+      "password": "Mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "phone": "Téléphone",
+      "city": "Ville",
+      "gender": "Genre",
+      "description": "Description",
+      "search": "Recherche...",
+      "male": "Homme",
+      "female": "Femme",
+      "online": "En ligne",
+      "submit": "S'inscrire",
+      "connect": "Se connecter"
+    },
+    "home": {
+      "title": "Rencontrez des personnes",
+      "subtitle": " vous permet d'accéder aux annonces des personnes près de chez vous, au chat ainsi qu'aux salons de discussion",
+      "cardDescription": " vous permet d'accéder aux annonces des personnes près de chez vous, au chat ainsi qu'aux salons de",
+      "startChat": "Je chat",
+      "startMeeting": "Je rencontre",
+      "activeRooms": "Salons actifs",
+      "adultRoom": "Salon adultes",
+      "connectedUsers": "utilisateurs connectés",
+      "seeMore": "Voir plus",
+      "registerNow": "Inscription chat et rencontre"
+    },
+    "profile": {
+      "premium": "Premium",
+      "free": "Gratuit",
+      "pricing": {
+        "title": "Tarification",
+        "free": {
+          "price": "0.00€ / mois",
+          "features": [
+            "Annonces illimitées",
+            "Chat illimité",
+            "Salons de discussion"
+          ]
+        },
+        "premium": {
+          "price": "13.99€ / mois",
+          "features": [
+            "Annonces illimitées",
+            "Chat illimité",
+            "Salons de discussion",
+            "Badge Premium"
+          ],
+          "button": "Passer Premium"
+        }
+      }
+    },
+
+    "footer": {
+        "description": "TchatRencontre vous permet d'accéder aux annonces des personnes près de chez vous, au chat ainsi qu'aux salons de discussion",
+        "menu": "Menu",
+        "terms": "Conditions d'utilisation",
+        "legal": "Mentions légales",
+        "privacy": "Politique de confidentialité"
+      }
+  }
+  
+  

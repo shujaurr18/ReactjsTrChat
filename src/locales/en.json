@@ -1,0 +1,74 @@
+
+{
+    "common": {
+      "chat": "Chat",
+      "profile": "Profile",
+      "announcements": "Announcements",
+      "login": "Login",
+      "discussionRooms": "Salons de discussion",
+      "register": "Register",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "phone": "Phone",
+      "city": "City",
+      "gender": "Gender",
+      "description": "Description",
+      "search": "Search...",
+      "male": "Male",
+      "female": "Female",
+      "online": "Online",
+      "submit": "Register",
+      "connect": "Connect"
+    },
+   
+    
+    "profile": {
+      "premium": "Premium",
+      "free": "Free",
+      "pricing": {
+        "title": "Pricing",
+        "free": {
+          "price": "€0.00 / month",
+          "features": [
+            "Unlimited announcements",
+            "Unlimited chat",
+            "Discussion rooms"
+          ]
+        },
+        "premium": {
+          "price": "€13.99 / month",
+          "features": [
+            "Unlimited announcements",
+            "Unlimited chat",
+            "Discussion rooms",
+            "Premium badge"
+          ],
+          "button": "Go Premium"
+        }
+      }
+    },
+   
+      "footer": {
+        "description":"TchatRencontre allows you to access announcements from people near you, chat and discussion rooms",
+        "menu": "Menu",
+        "terms": "Terms of Use",
+        "legal": "Legal Notice",
+        "privacy": "Privacy Policy"
+      },
+      "home": {
+        "title": "Meet people",
+        "subtitle": " allows you to access announcements from people near you, chat and discussion rooms",
+        "cardDescription": " allows you to access announcements from people near you, chat and rooms",
+        "startChat": "I chat",
+        "startMeeting": "I meet",
+        "activeRooms": "Active rooms",
+        "adultRoom": "Adult room",
+        "connectedUsers": "Connected users",
+        "seeMore": "See more",
+        "registerNow": "Register chat and meet"
+      }
+
+    
+    
+  }
