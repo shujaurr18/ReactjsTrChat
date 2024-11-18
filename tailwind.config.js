@@ -13,7 +13,7 @@ module.exports = {
         'background': '#F5F5F5',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Arial', 'sans-serif'],
       },
     },
   },
