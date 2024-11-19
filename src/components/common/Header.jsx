@@ -12,7 +12,7 @@ const Header = () => {
     <header className="bg-black h-28">
     <div className="max-w-7xl mx-auto px-4 h-full flex justify-between items-center">
       <Link to="/" className="flex items-center">
-        <h1 className="text-2xl font-bold" >
+        <h1 className="text-2xl font-bold" style={{fontFamily:'Caveat'}} >
           <span className="text-white">Tchat</span>
           <span className="text-[#C84E31]">Rencontre</span>
         </h1>
