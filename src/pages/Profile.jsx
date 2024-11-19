@@ -1,111 +1,158 @@
+import { Button, Card, Form, Input, Select } from 'antd';
 import React from 'react';
-import { Card, Button, Form, Input, Select, Tabs, Badge } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
-  const PricingCard = ({ type, price, features, buttonText }) => (
-    <Card className="text-center h-full flex flex-col">
-      <h3 className="text-xl font-bold mb-2">{type}</h3>
-      <div className="text-2xl font-bold text-primary mb-6">{price}</div>
-      <ul className="space-y-3 mb-8 flex-grow">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center justify-center gap-2">
-            <span className="text-green-500">✓</span>
-            {feature}
-          </li>
-        ))}
-      </ul>
-      <Button type={type === 'Premium' ? 'primary' : 'default'} block>
-        {buttonText}
-      </Button>
+  const PricingCard = ({ type, price, features }) => (
+    <Card className="bg-[#B4573B] text-white p-6 rounded-lg">
+      <div className="text-center">
+        <h3 className="text-xl font-semibold mb-2">{type}</h3>
+        <p className="text-lg mb-4">{price}</p>
+        <ul className="space-y-2 mb-6">
+          {features.map((feature, index) => (
+            <li key={index} className="text-center">{feature}</li>
+          ))}
+        </ul>
+        {type === t('profile.premium') && (
+          <Button className="w-full bg-[#B4573B] border text-white border-white hover:bg-[#8B4431]">
+            {t('profile.pricing.premium.button')}
+          </Button>
+        )}
+      </div>
     </Card>
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-1">
-          <Card>
-            <div className="text-center mb-6">
+    <div className="max-w-7xl mx-auto p-4 space-y-8">
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="w-full md:w-1/4">
+            <div className="text-center">
               <div className="w-32 h-32 mx-auto mb-4">
                 <img
                   src="/api/placeholder/128/128"
-                  alt="Profile"
+                  alt={t('common.profilePhoto')}
                   className="rounded-full w-full h-full object-cover"
                 />
               </div>
-              <Badge.Ribbon text="Premium" color="#C84E31">
+              <div className="relative">
+                <div className="absolute -top-3 right-0">
+                  <span className="bg-[#B4573B] text-white px-2 py-1 text-xs rounded">
+                    {t('profile.premium')}
+                  </span>
+                </div>
                 <h2 className="text-xl font-bold">joseph28</h2>
-              </Badge.Ribbon>
-              <p className="text-gray-500">Bordeaux</p>
+                <p className="text-gray-500">Bordeaux</p>
+              </div>
             </div>
-          </Card>
-        </div>
+          </div>
 
-        <div className="md:col-span-2">
-          <Tabs
-            items={[
-              {
-                key: '1',
-                label: t('profile.info'),
-                children: (
-                  <Form form={form} layout="vertical" initialValues={{
-                    pseudo: 'joseph28',
-                    city: 'Bordeaux'
-                  }}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <Form.Item name="pseudo" label={t('common.pseudo')}>
-                        <Input size="large" />
-                      </Form.Item>
-                      <Form.Item name="email" label={t('common.email')}>
-                        <Input size="large" />
-                      </Form.Item>
-                      <Form.Item name="phone" label={t('common.phone')}>
-                        <Input size="large" />
-                      </Form.Item>
-                      <Form.Item name="city" label={t('common.city')}>
-                        <Input size="large" />
-                      </Form.Item>
-                      <Form.Item name="gender" label={t('common.gender')}>
-                        <Select size="large">
-                          <Select.Option value="male">{t('common.male')}</Select.Option>
-                          <Select.Option value="female">{t('common.female')}</Select.Option>
-                        </Select>
-                      </Form.Item>
-                    </div>
-                    <Form.Item name="description" label={t('common.description')}>
-                      <Input.TextArea rows={4} />
+          <div className="w-full md:w-3/4">
+            <Form
+              form={form}
+              layout="vertical"
+              initialValues={{
+                pseudo: 'joseph28',
+                city: 'Bordeaux'
+              }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <Form.Item
+                    label={t('common.pseudo')}
+                    name="pseudo"
+                  >
+                    <Input className='rounded-full'/>
+                  </Form.Item>
+                  <Form.Item
+                    label={t('common.email')}
+                    name="email"
+                  >
+                    <Input type="email" className='rounded-full'/>
+                  </Form.Item>
+                  <Form.Item
+                    label={t('common.password')}
+                    name="password"
+                  >
+                    <Input.Password className='rounded-full'/>
+                  </Form.Item>
+                  <Form.Item
+                    label={t('common.phone')}
+                    name="phone"
+                  >
+                    <Input type="tel" className='rounded-full'/>
+                  </Form.Item>
+                  <Form.Item
+                    label={t('common.gender')}
+                    name="gender"
+                  >
+                    <Select
+                    
+                    className='rounded-full'
+                    >
+                      <Select.Option value="">{t('common.select')}</Select.Option>
+                      <Select.Option value="male">{t('common.male')}</Select.Option>
+                      <Select.Option value="female">{t('common.female')}</Select.Option>
+                    </Select>
+                  </Form.Item>
+                  <Form.Item
+                    label={t('common.city')}
+                    name="city"
+                  >
+                    <Input 
+                    className='rounded-full'
+                    />
+                  </Form.Item>
+                </div>
+                <div>
+                  <div className="space-y-4">
+                    <Form.Item
+                      label={t('common.description')}
+                      name="description"
+                    >
+                      <Input.TextArea className='rounded-3xl' rows={4} />
                     </Form.Item>
-                    <Button type="primary">{t('common.save')}</Button>
-                  </Form>
-                )
-              },
-              {
-                key: '2',
-                label: t('profile.pricing.title'),
-                children: (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <PricingCard
-                      type={t('profile.free')}
-                      price={t('profile.pricing.free.price')}
-                      features={t('profile.pricing.free.features', { returnObjects: true })}
-                      buttonText={t('common.current')}
-                    />
-                    <PricingCard
-                      type={t('profile.premium')}
-                      price={t('profile.pricing.premium.price')}
-                      features={t('profile.pricing.premium.features', { returnObjects: true })}
-                      buttonText={t('profile.pricing.premium.button')}
-                    />
+                    <Form.Item
+                      label={t('common.profilePhoto')}
+                    >
+                      <div className="border  p-4 text-center rounded-3xl">
+                        <img
+                          src="/api/placeholder/128/128"
+                          alt={t('common.profilePhoto')}
+                          className="w-24 h-24 mx-auto mb-2"
+                        />
+                        <Button variant="outline" className="w-full rounded-full">
+                          <span>⬇</span> {t('common.upload')}
+                        </Button>
+                      </div>
+                    </Form.Item>
                   </div>
-                )
-              }
-            ]}
-          />
+                </div>
+              </div>
+              <div className="mt-6">
+                <Button type="primary" className="bg-[#B4573B] hover:bg-[#8B4431] rounded-full px-10" htmlType="submit">
+                  {t('common.save')}
+                </Button>
+              </div>
+            </Form>
+          </div>
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <PricingCard
+          type={t('profile.free')}
+          price={t('profile.pricing.free.price')}
+          features={t('profile.pricing.free.features', { returnObjects: true })}
+        />
+        <PricingCard
+          type={t('profile.premium')}
+          price={t('profile.pricing.premium.price')}
+          features={t('profile.pricing.premium.features', { returnObjects: true })}
+        />
       </div>
     </div>
   );

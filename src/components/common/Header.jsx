@@ -12,7 +12,7 @@ const Header = () => {
     <header className="bg-black h-28">
     <div className="max-w-7xl mx-auto px-4 h-full flex justify-between items-center">
       <Link to="/" className="flex items-center">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold" >
           <span className="text-white">Tchat</span>
           <span className="text-[#C84E31]">Rencontre</span>
         </h1>
@@ -22,7 +22,10 @@ const Header = () => {
         <Button 
           className="!bg-[#C84E31] h-8 px-4 text-white hover:!bg-[#C84E31] px-4/90 border-none"
         >
+        <Link to={"/announcements"}>
+
           {t('common.announcements')}
+          </Link>
         </Button>
         
         <Button 
@@ -36,12 +39,13 @@ const Header = () => {
         >
           {t('common.discussionRooms')}
         </Button>
-        
+        <Link to={"/profile"}>
         <Button 
           className="bg-white hover:bg-gray-50 px-12 h-8"
-        >
+          >
           {t('common.profile')}
         </Button>
+          </Link>
       </div>
     </div>
   </header>

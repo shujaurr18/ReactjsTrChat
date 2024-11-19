@@ -19,7 +19,15 @@
       "female": "Female",
       "online": "Online",
       "submit": "Register",
-      "connect": "Connect"
+      "connect": "Connect",
+      "pseudo": "Username",
+      "profilePhoto": "Profile photo",
+      "save": "Save",
+      "upload": "Upload",
+      "select": "Select",
+      "filters": "Refine search",
+      "like": "Like",
+      "premium": "Premium"
     },
    
     
@@ -31,23 +39,23 @@
         "free": {
           "price": "€0.00 / month",
           "features": [
-            "Unlimited announcements",
+            "Unlimited listings",
             "Unlimited chat",
-            "Discussion rooms"
+            "Discussion rooms",
+            "Premium badge"
           ]
         },
         "premium": {
           "price": "€13.99 / month",
           "features": [
-            "Unlimited announcements",
+            "Unlimited listings",
             "Unlimited chat",
             "Discussion rooms",
             "Premium badge"
           ],
           "button": "Go Premium"
         }
-      }
-    },
+      }},
    
       "footer": {
         "description":"TchatRencontre allows you to access announcements from people near you, chat and discussion rooms",
@@ -69,6 +77,13 @@
         "registerNow": "Register chat and meet"
       }
 
+    ,
+ 
     
+    "announcements": {
+      "title": "Announcements",
+      "noResults": "No announcements found",
+      "filterResults": "Filter results"
+    }
     
   }

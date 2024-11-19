@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import theme from './theme/theme.config.js';
+import Profile from './pages/Profile.jsx';
+import Announcements from './pages/Announcements.jsx';
 
 function App() {
   return (
@@ -15,6 +17,10 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route  path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="announcements" element={<Announcements />} />
+
+            
             <Route  path="/" element={<Home />} />
             <Route path="*" element={<Login />} /> {/* This catches all unmatched routes */}
           </Route>

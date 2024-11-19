@@ -19,6 +19,10 @@ const theme = {
       Card: {
         borderRadius: 8,
       },
+      Select: {
+        borderRadius: 18,
+        controlHeight: 40,
+      },
     },
   };
   

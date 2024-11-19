@@ -1,6 +1,5 @@
-
 {
-    "common": {
+  "common": {
     "chat": "Discussion",
     "profile": "Profil",
     "announcements": "Annonces",
@@ -19,56 +18,64 @@
     "female": "Femme",
     "online": "En ligne",
     "submit": "S'inscrire",
-    "connect": "Se connecter"
-    },
-   
-    
-    "profile": {
-      "premium": "Premium",
-      "free": "Free",
-      "pricing": {
-        "title": "Pricing",
-        "free": {
-          "price": "€0.00 / month",
-          "features": [
-            "Unlimited announcements",
-            "Unlimited chat",
-            "Discussion rooms"
-          ]
-        },
-        "premium": {
-          "price": "€13.99 / month",
-          "features": [
-            "Unlimited announcements",
-            "Unlimited chat",
-            "Discussion rooms",
-            "Premium badge"
-          ],
-          "button": "Go Premium"
-        }
-      }
-    },
-   
-      "footer": {
-        "description":"TchatRencontre allows you to access announcements from people near you, chat and discussion rooms",
-        "menu": "Menu",
-        "terms": "Terms of Use",
-        "legal": "Legal Notice",
-        "privacy": "Privacy Policy"
+    "connect": "Se connecter",
+    "pseudo": "Pseudo",
+    "profilePhoto": "Photo de profil",
+    "save": "Enregistrer",
+    "upload": "Télécharger",
+    "select": "Sélectionner",
+    "filters": "Affiner votre recherche",
+    "like": "J'aime",
+    "premium": "Premium"
+  },
+  "profile": {
+    "premium": "Premium",
+    "free": "Gratuit",
+    "pricing": {
+      "title": "Tarification",
+      "free": {
+        "price": "0.00€ / mois",
+        "features": [
+          "Annonces illimitées",
+          "Chat illimité",
+          "Salons de discussion",
+          "Badge Premium"
+        ]
       },
-      "home": {
-        "title": "Meet people",
-        "subtitle": " allows you to access announcements from people near you, chat and discussion rooms",
-        "cardDescription": " allows you to access announcements from people near you, chat and rooms",
-        "startChat": "I chat",
-        "startMeeting": "I meet",
-        "activeRooms": "Active rooms",
-        "adultRoom": "Adult room",
-        "connectedUsers": "Connected users",
-        "seeMore": "See more",
-        "registerNow": "Register chat and meet"
+      "premium": {
+        "price": "13.99€ / mois",
+        "features": [
+          "Annonces illimitées",
+          "Chat illimité",
+          "Salons de discussion",
+          "Badge Premium"
+        ],
+        "button": "Passer Premium"
       }
-
-    
-    
+    }
+  },
+  "footer": {
+    "description": "TchatRencontre vous permet d'accéder aux annonces des personnes près de chez vous, au chat et aux salons de discussion",
+    "menu": "Menu",
+    "terms": "Conditions d'utilisation",
+    "legal": "Mentions légales", 
+    "privacy": "Politique de confidentialité"
+  },
+  "home": {
+    "title": "Rencontrer des gens",
+    "subtitle": "Vous permet d'accéder aux annonces des personnes près de chez vous, au chat et aux salons de discussion",
+    "cardDescription": "Vous permet d'accéder aux annonces des personnes près de chez vous, au chat et aux salons",
+    "startChat": "Je discute",
+    "startMeeting": "Je rencontre",
+    "activeRooms": "Salons actifs",
+    "adultRoom": "Salon adulte",
+    "connectedUsers": "Utilisateurs connectés",
+    "seeMore": "Voir plus",
+    "registerNow": "Inscrivez-vous pour chatter et rencontrer"
+  },
+  "announcements": {
+    "title": "Annonces",
+    "noResults": "Aucune annonce trouvée",
+    "filterResults": "Filtrer les résultats"
   }
+}
