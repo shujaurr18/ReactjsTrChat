@@ -27,12 +27,14 @@ const Header = () => {
           {t('common.announcements')}
           </Link>
         </Button>
+        <Link to={"/chat"}>
         
         <Button 
           className="!bg-[#C84E31] h-8 px-12 text-white hover:!bg-[#C84E31] px-4/90 border-none"
         >
           {t('common.chat')}
         </Button>
+        </Link>
         
         <Button 
           className="!bg-[#C84E31] h-8 text-white hover:!bg-[#C84E31]/90 border-none"

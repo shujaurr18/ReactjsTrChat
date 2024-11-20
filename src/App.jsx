@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import theme from './theme/theme.config.js';
 import Profile from './pages/Profile.jsx';
 import Announcements from './pages/Announcements.jsx';
+import Chat from './pages/Chat.jsx';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="profile" element={<Profile />} />
             <Route path="announcements" element={<Announcements />} />
+            <Route path="chat" element={<Chat />} />
+
 
             
             <Route  path="/" element={<Home />} />

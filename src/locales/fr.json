@@ -77,5 +77,23 @@
     "title": "Annonces",
     "noResults": "Aucune annonce trouvée",
     "filterResults": "Filtrer les résultats"
+  },
+  "chat": {
+    "all": "Tous",
+    "online": "En ligne",
+    "messageInput": "Message...",
+    "send": "Envoyer",
+    "noMessages": "Aucun message",
+    "typing": "est en train d'écrire...",
+    "lastSeen": "Dernière connexion",
+    "justNow": "À l'instant",
+    "minutes": "minutes",
+    "hours": "heures",
+    "yesterday": "Hier",
+    "status": {
+      "online": "En ligne",
+      "offline": "Hors ligne",
+      "away": "Absent"
+    }
   }
 }

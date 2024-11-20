@@ -84,6 +84,25 @@
       "title": "Announcements",
       "noResults": "No announcements found",
       "filterResults": "Filter results"
+    },
+    "chat": {
+      "all": "All",
+      "online": "Online",
+      "messageInput": "Message...",
+      "send": "Send",
+      "noMessages": "No messages",
+      "typing": "is typing...",
+      "lastSeen": "Last seen",
+      "justNow": "Just now",
+      "minutes": "minutes",
+      "hours": "hours",
+      "yesterday": "Yesterday",
+      "status": {
+        "online": "Online",
+        "offline": "Offline",
+        "away": "Away"
+      }
     }
+  
     
   }

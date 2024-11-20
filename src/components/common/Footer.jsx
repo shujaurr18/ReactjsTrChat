@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="bg-black text-white py-8">
     <div className="max-w-7xl mx-auto px-4">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold" style={{fontFamily:'Caveat'}} >
           <span className="text-white">Tchat</span>
           <span className="text-primary">Rencontre</span>
         </h2>
