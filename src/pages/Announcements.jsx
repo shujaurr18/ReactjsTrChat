@@ -1,4 +1,4 @@
-import { Input, Card, Badge, Form, Radio } from 'antd';
+import { Input, Card, Badge, Form, Radio, Checkbox } from 'antd';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import bgImage from '@/assets/bgimage.png';
@@ -56,25 +56,22 @@ const Announcements = () => {
     <div className="max-w-7xl mx-auto px-4 py-8 ">
       <div className="flex flex-col md:flex-row gap-6 mb-8">
         {/* Profile Section */}
-        <div className="flex items-center gap-4 bg-white p-3 rounded-xl pr-14">
-          <div className="w-16 h-16">
-            <img
-              src={bgImage}
-              alt="Profile"
-              className="rounded-full w-full h-full object-cover"
-            />
-          </div>
-          <div>
-              <p className='text-primary'>Premium</p>
-            <div className="flex items-center gap-2">
-              <h2 className="text-xl font-semibold">joseph28</h2>
-              {/* <Badge count="" style={{ backgroundColor: '#C84E31' }} /> */}
-
-
+        <div className="flex items-center mt-16 gap-4 bg-white p-3 rounded-xl pr-14">
+            <div className="w-32 h-16 relative top-[-60px]">
+              <img
+                src={bgImage}
+                alt="Profile"
+                className="rounded-2xl h-32 w-32 object-cover"
+              />
             </div>
-            <p className="text-gray-500">Bordeaux</p>
+            <div>
+              <p className="text-primary">Premium</p>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold">joseph28</h2>
+              </div>
+              <p className="text-gray-500">Bordeaux</p>
+            </div>
           </div>
-        </div>
 
         {/* Search Section */}
         <div className="flex-grow ml-32">
@@ -92,11 +89,11 @@ const Announcements = () => {
 
               />
             </div>
-            <Radio.Group className="flex gap-4">
-              <Radio value="homme">{t('common.male')}</Radio>
-              <Radio value="femme">{t('common.female')}</Radio>
-              <Radio value="enLigne">{t('common.online')}</Radio>
-            </Radio.Group>
+            <Checkbox.Group defaultValue={'femme'} className="flex gap-4">
+              <Checkbox value="homme">{t('common.male')}</Checkbox>
+              <Checkbox defaultChecked value="femme">{t('common.female')}</Checkbox>
+              <Checkbox value="enLigne">{t('common.online')}</Checkbox>
+            </Checkbox.Group>
           </Form>
         </div>
       </div>

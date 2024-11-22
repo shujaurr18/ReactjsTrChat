@@ -1,6 +1,7 @@
 import { Button, Card, Form, Input, Select } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import bgImage from '@/assets/bgimage.png';
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -26,28 +27,34 @@ const Profile = () => {
   );
 
   return (
+    <>
     <div className="max-w-7xl mx-auto p-4 space-y-8">
-      <div className="bg-white rounded-lg p-6 shadow-sm">
+      <div className=" rounded-lg p-6 shadow-sm">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/4">
-            <div className="text-center">
-              <div className="w-32 h-32 mx-auto mb-4">
-                <img
-                  src="/api/placeholder/128/128"
-                  alt={t('common.profilePhoto')}
-                  className="rounded-full w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative">
-                <div className="absolute -top-3 right-0">
-                  <span className="bg-[#B4573B] text-white px-2 py-1 text-xs rounded">
-                    {t('profile.premium')}
-                  </span>
-                </div>
-                <h2 className="text-xl font-bold">joseph28</h2>
-                <p className="text-gray-500">Bordeaux</p>
-              </div>
+          <div className="flex items-center mt-16 gap-4 bg-white p-3 rounded-xl pr-14">
+            <div className="w-32 h-16 relative top-[-60px]">
+              <img
+                src={bgImage}
+                alt="Profile"
+                className="rounded-2xl h-32 w-32 object-cover"
+              />
             </div>
+            <div>
+              <p className="text-primary">Premium</p>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold">joseph28</h2>
+              </div>
+              <p className="text-gray-500">Bordeaux</p>
+            </div>
+          </div>
+          <br />
+          <Button type="primary" className="bg-[#B4573B] w-full hover:bg-[#8B4431] rounded-full px-10" htmlType="submit">
+                  Publish an ad
+                </Button>
+                <Button type="primary" className="mt-4 w-full bg-[#B4573B] hover:bg-[#8B4431] rounded-full px-10" htmlType="submit">
+                  See my ads
+                </Button>
           </div>
 
           <div className="w-full md:w-3/4">
@@ -120,9 +127,9 @@ const Profile = () => {
                     >
                       <div className="border  p-4 text-center rounded-3xl">
                         <img
-                          src="/api/placeholder/128/128"
+                          src={bgImage}
                           alt={t('common.profilePhoto')}
-                          className="w-24 h-24 mx-auto mb-2"
+                          className="w-24 h-24 mx-auto mb-2 rounded-2xl"
                         />
                         <Button variant="outline" className="w-full rounded-full">
                           <span>⬇</span> {t('common.upload')}
@@ -141,8 +148,12 @@ const Profile = () => {
           </div>
         </div>
       </div>
+    </div>
+<div className="bg-white">
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-7xl mx-auto p-4 space-y-8 ">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
         <PricingCard
           type={t('profile.free')}
           price={t('profile.pricing.free.price')}
@@ -155,6 +166,10 @@ const Profile = () => {
         />
       </div>
     </div>
+</div>
+
+    </>
+
   );
 };
 

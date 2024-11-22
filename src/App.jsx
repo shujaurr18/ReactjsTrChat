@@ -9,6 +9,7 @@ import theme from './theme/theme.config.js';
 import Profile from './pages/Profile.jsx';
 import Announcements from './pages/Announcements.jsx';
 import Chat from './pages/Chat.jsx';
+import GroupChat from './pages/GroupChat.jsx';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="announcements" element={<Announcements />} />
             <Route path="chat" element={<Chat />} />
+            <Route path="group-chat" element={<GroupChat />} />
+
 
 
             

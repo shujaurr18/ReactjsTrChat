@@ -27,6 +27,8 @@ const Header = () => {
           {t('common.announcements')}
           </Link>
         </Button>
+     
+     
         <Link to={"/chat"}>
         
         <Button 
@@ -35,12 +37,14 @@ const Header = () => {
           {t('common.chat')}
         </Button>
         </Link>
+        <Link to={"/group-chat"}>
         
         <Button 
           className="!bg-[#C84E31] h-8 text-white hover:!bg-[#C84E31]/90 border-none"
         >
           {t('common.discussionRooms')}
         </Button>
+        </Link>
         <Link to={"/profile"}>
         <Button 
           className="bg-white hover:bg-gray-50 px-12 h-8"

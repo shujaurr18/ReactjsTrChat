@@ -4,6 +4,8 @@ import { Button, Card } from 'antd';
 import { useTranslation } from 'react-i18next';
 import bgImage from '@/assets/bgimage.png';
 import bgImagecontact from '@/assets/bgImagecontact.png';
+import { HeartFilled, MessageFilled } from '@ant-design/icons';
+// import { Heart } from 'lucide-react';
 
 
 const Home = () => {
@@ -23,7 +25,7 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-black/30">
           <div className="max-w-7xl mx-auto px-4 py-20">
-            <h1 className="text-5xl font-bold text-white mb-8">
+            <h1 className="text-5xl  text-white mb-8">
               {t('home.title')}
             </h1>
             <br/>
@@ -33,22 +35,22 @@ const Home = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-96 justify-between ">
-              <Card className="bg-[#C1C1C1] backdrop-blur">
+              <Card className="bg-[#C1C1C1] backdrop-blur rounded-3xl">
                 <h3 className="text-white mb-4">
                   <span className="font-bold">Tchat<span className="text-primary">Rencontre</span></span>
                   {t('home.cardDescription')}
                 </h3>
-                <Button className="!bg-primary text-white border-none">
+                <Button className="!bg-primary rounded-3xl px-10 text-white border-none">
                   {t('home.startChat')}
                 </Button>
               </Card>
 
-              <Card className="bg-[#C1C1C1] backdrop-blur">
+              <Card className="bg-[#C1C1C1] backdrop-blur rounded-3xl">
                 <h3 className="text-white mb-4">
                   <span className="font-bold">Tchat<span className="text-primary">Rencontre</span></span>
                   {t('home.cardDescription')}
                 </h3>
-                <Button className="!bg-primary text-white border-none">
+                <Button className="rounded-3xl px-10 !bg-primary text-white border-none">
                   {t('home.startMeeting')}
                 </Button>
               </Card>
@@ -65,11 +67,16 @@ const Home = () => {
   {/* Left Column */}
             
   <div className="space-y-4">
-            <h2 className="text-2xl font-bold mb-6">{t('home.activeRooms')}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('home.activeRooms')}</h2>
 
     {[...Array(5)].map((_, i) => (
       <div key={i} className="flex items-center gap-4 p-4 rounded-lg border">
-        <div className="w-12 h-12 rounded-full bg-gray-200" />
+        {/* <div className="w-12 h-12 rounded-full bg-gray-200" /> */}
+        <img
+          src={bgImage}
+          alt="User"
+          className="w-12 h-12 rounded-full object-cover"
+        />
         <div>
           <h3>{t('home.adultRoom')}</h3>
           <p className="text-sm text-gray-500">10 {t('home.connectedUsers')}</p>
@@ -83,12 +90,15 @@ const Home = () => {
 
   {/* Right Column */}
   <div className="space-y-4">
-  <h2 className="text-2xl font-bold mb-6">{t('home.connectedUsers')}</h2>
+  <h2 className="text-2xl font-bold mb-6 text-center">{t('home.connectedUsers')}</h2>
 
     {[...Array(5)].map((_, i) => (
       <div key={i} className="flex items-center gap-4 p-4 rounded-lg border">
-        <div className="w-12 h-12 rounded-full bg-gray-200" />
-        <div>
+ <img
+          src={bgImage}
+          alt="User"
+          className="w-12 h-12 rounded-full object-cover"
+        />        <div>
           <h3>{t('home.adultRoom')}</h3>
           <p className="text-sm text-gray-500">10 {t('home.connectedUsers')}</p>
         </div>
@@ -101,7 +111,7 @@ const Home = () => {
 </div>
 <div className="text-center">
 
-<Button className=" !bg-primary text-white border-none mt-4">
+<Button className=" !bg-primary px-10 rounded-3xl text-white border-none mt-4">
   {t('home.seeMore')}
 </Button>
 </div>
@@ -130,34 +140,14 @@ const Home = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-3">
           {/* Message Icon */}
           <div className="w-12 h-12 bg-white/50 rounded-lg shadow-lg flex items-center justify-center">
-            <svg 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2"
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
+        
+        <MessageFilled className='text-white'/>
           </div>
           
           {/* Heart Icon */}
           <div className="w-12 h-12 bg-white/50 rounded-lg shadow-lg flex items-center justify-center">
-            <svg 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="#ff0000" 
-              strokeWidth="2"
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </svg>
+         
+         <HeartFilled className='text-primary'/>
           </div>
         </div>
       </div>
@@ -188,7 +178,7 @@ const Home = () => {
   
   <div className="absolute inset-0">
     {/* Top Card */}
-    <div className="absolute top-12 left-12 max-w-lg bg-white/80 backdrop-blur-sm rounded-2xl p-6">
+    <div className="absolute top-12 left-12 max-w-lg bg-[#C1C1C1] backdrop-blur-sm rounded-2xl p-6">
       <div className="space-y-4">
         <h2 className="text-xl">
           <span className="text-black font-medium">Tchat</span>

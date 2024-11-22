@@ -3,7 +3,7 @@ import { Input, Avatar, Badge, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import bgImage from '@/assets/bgimage.png';
 
-const Chat = () => {
+const GroupChat = () => {
   const { t } = useTranslation();
 
   const ChatUserItem = ({ user, location, online, unreadCount }) => (
@@ -35,9 +35,14 @@ const Chat = () => {
       )}
     </div>
   );
+  const GroupChatTitle = ({ title, selected }) => (
+    <div className={`p-3 rounded-lg mb-2 cursor-pointer ${selected ? 'bg-gray-300 border border-[#C84E31] text-[#C84E31]' : 'bg-white'}`}>
+      <p className="text-sm">{title}</p>
+    </div>
+  );
 
   return (
-    <div className="p-4 py-20 max-w-7xl mx-auto">
+    <div className="p-4 max-w-7xl mx-auto py-20">
       <div className="flex flex-col md:flex-row gap-6 mb-8">
         <div>
         <div className="flex items-center mt-16 gap-4 bg-white p-3 rounded-xl pr-14">
@@ -55,6 +60,14 @@ const Chat = () => {
               </div>
               <p className="text-gray-500">Bordeaux</p>
             </div>
+          </div>
+          <br />
+          <div className="space-y-4">
+            <GroupChatTitle title="Group chat title" selected={true} />
+            <GroupChatTitle title="Group chat title" />
+            <GroupChatTitle title="Group chat title" />
+            <GroupChatTitle title="Group chat title" />
+            <GroupChatTitle title="Group chat title" />
           </div>
         </div>
 
@@ -137,4 +150,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default GroupChat;
