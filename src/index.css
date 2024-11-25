@@ -4,3 +4,7 @@
 @tailwind utilities;
 .ant-form-item .ant-form-item-explain-error {
     color: #ffffff;}
+    .ant-modal .ant-modal-content {
+        position: relative;
+        background-color: #C1432E;
+    }

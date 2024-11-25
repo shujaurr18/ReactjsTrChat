@@ -21,13 +21,13 @@ const Register = () => {
       const { email, password, ...userData } = values;
       const result = await registerUser(email, password, userData);
       if (result.success) {
-        showNotification('success', 'Success', 'Registration successful!');
+        showNotification('success', 'Succès', 'Inscription réussie !');
         navigate('/');
       } else {
-        showNotification('error', 'Error', result.error);
+        showNotification('error', 'Erreur', result.error);
       }
     } catch (error) {
-      showNotification('error', 'Error', error.message);
+      showNotification('error', 'Erreur', error.message);
     } finally {
       setLoading(false);
     }
@@ -49,88 +49,84 @@ const Register = () => {
           layout="vertical" 
           onFinish={onFinish}
         >
-          <div           className="bg-[#C84E31] rounded-lg p-6 space-y-4"
-          >
-
-          <h2 className="text-xl font-semibold text-white mb-6 text-center">
-            {t('common.register')}
-          </h2>
-          
-          <Form.Item 
-            name="pseudo"
-            rules={[{ required: true, message: 'Please input your pseudo!' }]}
-          >
-            <Input 
-              placeholder="Pseudo"
-              className="!rounded-md !border-none"
-            />
-          </Form.Item>
-
-          <Form.Item 
-            name="email"
-            rules={[
-              { required: true, message: 'Please input your email!' },
-              { type: 'email', message: 'Please input a valid email!' }
-            ]}
-          >
-            <Input 
-              placeholder="Email"
-              className="!rounded-md !border-none"
-            />
-          </Form.Item>
-
-          <Form.Item 
-            name="password"
-            rules={[
-              { required: true, message: 'Please input your password!' },
-              { min: 6, message: 'Password must be at least 6 characters!' }
-            ]}
-          >
-            <Input.Password 
-              placeholder="Password"
-              className="!rounded-md !border-none"
-            />
-          </Form.Item>
-
-          <Form.Item 
-            name="phone"
-            rules={[{ required: true, message: 'Please input your phone number!' }]}
-          >
-            <Input 
-              placeholder="Phone"// src/pages/Register.js (continued)
-              className="!rounded-md !border-none"
-            />
-          </Form.Item>
-
-          <Form.Item 
-            name="gender"
-            rules={[{ required: true, message: 'Please select your gender!' }]}
-          >
-            <Select
-              placeholder="Gender"
-              className="!rounded-md"
-              dropdownStyle={{ borderRadius: '8px' }}
+          <div className="bg-[#C84E31] rounded-lg p-6 space-y-4">
+            <h2 className="text-xl font-semibold text-white mb-6 text-center">
+              {t('common.register')}
+            </h2>
+            
+            <Form.Item 
+              name="pseudo"
+              rules={[{ required: true, message: 'Veuillez saisir votre pseudo !' }]}
             >
-              <Select.Option value="male">{t('common.male')}</Select.Option>
-              <Select.Option value="female">{t('common.female')}</Select.Option>
-            </Select>
-          </Form.Item>
+              <Input 
+                placeholder="Pseudo"
+                className="!rounded-md !border-none"
+              />
+            </Form.Item>
 
-          <Form.Item 
-            name="city"
-            rules={[{ required: true, message: 'Please input your city!' }]}
-          >
-            <Input 
-              placeholder="City"
-              className="!rounded-md !border-none"
-            />
-          </Form.Item>
+            <Form.Item 
+              name="email"
+              rules={[
+                { required: true, message: 'Veuillez saisir votre email !' },
+                { type: 'email', message: 'Veuillez saisir un email valide !' }
+              ]}
+            >
+              <Input 
+                placeholder="Email"
+                className="!rounded-md !border-none"
+              />
+            </Form.Item>
 
-        
+            <Form.Item 
+              name="password"
+              rules={[
+                { required: true, message: 'Veuillez saisir votre mot de passe !' },
+                { min: 6, message: 'Le mot de passe doit comporter au moins 6 caractères !' }
+              ]}
+            >
+              <Input.Password 
+                placeholder="Mot de passe"
+                className="!rounded-md !border-none"
+              />
+            </Form.Item>
 
-          <div className="text-center text-white">
-            Already have an account? <Link to="/login" className='underline'>Login</Link>
-          </div>
+            <Form.Item 
+              name="phone"
+              rules={[{ required: true, message: 'Veuillez saisir votre numéro de téléphone !' }]}
+            >
+              <Input 
+                placeholder="Téléphone"
+                className="!rounded-md !border-none"
+              />
+            </Form.Item>
+
+            <Form.Item 
+              name="gender"
+              rules={[{ required: true, message: 'Veuillez sélectionner votre genre !' }]}
+            >
+              <Select
+                placeholder="Genre"
+                className="!rounded-md"
+                dropdownStyle={{ borderRadius: '8px' }}
+              >
+                <Select.Option value="male">{t('common.male')}</Select.Option>
+                <Select.Option value="female">{t('common.female')}</Select.Option>
+              </Select>
+            </Form.Item>
+
+            <Form.Item 
+              name="city"
+              rules={[{ required: true, message: 'Veuillez saisir votre ville !' }]}
+            >
+              <Input 
+                placeholder="Ville"
+                className="!rounded-md !border-none"
+              />
+            </Form.Item>
+
+            <div className="text-center text-white">
+              Vous avez déjà un compte ? <Link to="/login" className='underline'>Connexion</Link>
+            </div>
           </div>
           <br />
           <Form.Item>

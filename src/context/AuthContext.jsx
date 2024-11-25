@@ -1,8 +1,8 @@
-
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { notification } from 'antd';
 import { auth } from '../services/firebase';
-// import { auth, getCurrentUser } from '../utils/firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext({});
 
@@ -19,6 +19,15 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      showNotification('success', 'Success', 'Logged out successfully');
+    } catch (error) {
+      showNotification('error', 'Error', 'Failed to logout');
+    }
+  };
+
   const showNotification = (type, message, description) => {
     notification[type]({
       message,
@@ -30,7 +39,8 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
-    showNotification
+    showNotification,
+    logout
   };
 
   return (

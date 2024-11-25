@@ -13,6 +13,10 @@ import Chat from './pages/Chat.jsx';
 import GroupChat from './pages/GroupChat.jsx';
 import ProtectedRoute, { PublicRoute } from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext.jsx';
+import WarningModal from './Modals/WarningModal.jsx';
+import { MyAnnouncements, PublishAnnouncement } from './pages/PublishAnnouncement.jsx';
+import AddDetails from './pages/AddDetails.jsx';
+import ForgotPassword from './components/ForgotPassword.jsx';
 // import { AuthProvider } from './context/AuthContext.js';
 
 function App() {
@@ -20,6 +24,7 @@ function App() {
     <ConfigProvider theme={theme}>
       <AuthProvider>
         <BrowserRouter>
+        <WarningModal/>
           <Routes>
               <Route 
                 path="login" 
@@ -29,6 +34,15 @@ function App() {
                   </PublicRoute>
                 } 
               />
+              <Route 
+  path="forgot-password" 
+  element={
+    <PublicRoute>
+      <ForgotPassword />
+    </PublicRoute>
+  } 
+/>
+    
               <Route 
                 path="register" 
                 element={
@@ -49,6 +63,30 @@ function App() {
                   </ProtectedRoute>
                 } 
               />
+                        <Route 
+  path="publish" 
+  element={
+    <ProtectedRoute>
+      <PublishAnnouncement />
+    </ProtectedRoute>
+  } 
+/>
+<Route 
+  path="my-adds" 
+  element={
+    <ProtectedRoute>
+      <MyAnnouncements />
+    </ProtectedRoute>
+  } 
+/>
+<Route 
+  path="my-adds/:id" 
+  element={
+    <ProtectedRoute>
+      <AddDetails />
+    </ProtectedRoute>
+  } 
+/>
               <Route 
                 path="profile" 
                 element={

@@ -7,15 +7,16 @@ import { useAuth } from '../context/AuthContext';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import bgImage from '@/assets/bgimage.png';
 import { db } from '../services/firebase';
+import { useNavigate } from 'react-router-dom';
+import { LogOutIcon } from 'lucide-react';
 
 const Profile = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { user, showNotification } = useAuth();
-  const [loading, setLoading] = useState(true);
+  const { user, showNotification, logout } = useAuth();  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [userData, setUserData] = useState(null);
-
+const navigate=useNavigate()
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -115,19 +116,29 @@ const Profile = () => {
               </div>
               <br />
               <Button 
-                type="primary" 
-                className="bg-[#B4573B] w-full hover:bg-[#8B4431] rounded-full px-10"
-                onClick={() => showNotification('info', 'Coming Soon', 'This feature is coming soon!')}
-              >
-                Publish an ad
-              </Button>
-              <Button 
-                type="primary" 
-                className="mt-4 w-full bg-[#B4573B] hover:bg-[#8B4431] rounded-full px-10"
-                onClick={() => showNotification('info', 'Coming Soon', 'This feature is coming soon!')}
-              >
-                See my ads
-              </Button>
+  type="primary" 
+  className="bg-[#B4573B] w-full hover:bg-[#8B4431] rounded-full px-10"
+  onClick={() => navigate('/publish')} // Add this
+>
+  Publier une annonce
+</Button>
+<Button 
+  type="primary" 
+  className="mt-4 w-full bg-[#B4573B] hover:bg-[#8B4431] rounded-full px-10"
+  onClick={() => navigate('/my-adds')} // Add this
+>
+  Voir mes annonces
+</Button>
+<Button 
+  // type="primary" 
+  className="mt-4 w-full text-red-900 border-[#B4573B] hover:bg-[#8B4431] rounded-full px-10"
+  onClick={() => {
+    logout();
+    navigate('/login');
+  }}
+>
+ <LogOutIcon className='text-red-900'/> Se déconnecter
+</Button>
             </div>
 
             <div className="w-full md:w-3/4">
