@@ -1,63 +1,113 @@
-import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+// src/pages/Register.js
+import React, { useState } from 'react';
+import { Form, Input, Button, Select, Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
-import bgimage from '@/assets/bgimage.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+// import { registerUser } from '../utils/firebase';
+import { useAuth } from '../context/AuthContext';
+import bgimage from '@/assets/bgimage.png';
+import { registerUser } from '../services/firebase';
 
 const Register = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const { showNotification } = useAuth();
+  const [loading, setLoading] = useState(false);
+
+  const onFinish = async (values) => {
+    setLoading(true);
+    try {
+      const { email, password, ...userData } = values;
+      const result = await registerUser(email, password, userData);
+      if (result.success) {
+        showNotification('success', 'Success', 'Registration successful!');
+        navigate('/');
+      } else {
+        showNotification('error', 'Error', result.error);
+      }
+    } catch (error) {
+      showNotification('error', 'Error', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div 
-    style={{ 
+      style={{ 
         backgroundImage: `url(${bgimage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
-    className="min-h-screen bg-[#1F1F1F] bg-opacity-50 flex items-center justify-center">
+      className="min-h-screen bg-[#1F1F1F] bg-opacity-50 flex items-center justify-center"
+    >
       <div className="w-full max-w-md p-6">
         <Form 
           form={form} 
           layout="vertical" 
-          className="bg-[#C84E31] rounded-lg p-6 space-y-4"
+          onFinish={onFinish}
         >
+          <div           className="bg-[#C84E31] rounded-lg p-6 space-y-4"
+          >
+
           <h2 className="text-xl font-semibold text-white mb-6 text-center">
             {t('common.register')}
           </h2>
           
-          <Form.Item name="pseudo">
+          <Form.Item 
+            name="pseudo"
+            rules={[{ required: true, message: 'Please input your pseudo!' }]}
+          >
             <Input 
               placeholder="Pseudo"
               className="!rounded-md !border-none"
             />
           </Form.Item>
 
-          <Form.Item name="email">
+          <Form.Item 
+            name="email"
+            rules={[
+              { required: true, message: 'Please input your email!' },
+              { type: 'email', message: 'Please input a valid email!' }
+            ]}
+          >
             <Input 
               placeholder="Email"
               className="!rounded-md !border-none"
             />
           </Form.Item>
 
-          <Form.Item name="password">
+          <Form.Item 
+            name="password"
+            rules={[
+              { required: true, message: 'Please input your password!' },
+              { min: 6, message: 'Password must be at least 6 characters!' }
+            ]}
+          >
             <Input.Password 
-              placeholder="Mot de passe"
+              placeholder="Password"
               className="!rounded-md !border-none"
             />
           </Form.Item>
 
-          <Form.Item name="phone">
+          <Form.Item 
+            name="phone"
+            rules={[{ required: true, message: 'Please input your phone number!' }]}
+          >
             <Input 
-              placeholder="Téléphone"
+              placeholder="Phone"// src/pages/Register.js (continued)
               className="!rounded-md !border-none"
             />
           </Form.Item>
 
-          <Form.Item name="gender">
+          <Form.Item 
+            name="gender"
+            rules={[{ required: true, message: 'Please select your gender!' }]}
+          >
             <Select
-              placeholder="Genre"
+              placeholder="Gender"
               className="!rounded-md"
               dropdownStyle={{ borderRadius: '8px' }}
             >
@@ -66,29 +116,34 @@ const Register = () => {
             </Select>
           </Form.Item>
 
-          <Form.Item name="city">
+          <Form.Item 
+            name="city"
+            rules={[{ required: true, message: 'Please input your city!' }]}
+          >
             <Input 
-              placeholder="Ville"
+              placeholder="City"
               className="!rounded-md !border-none"
             />
           </Form.Item>
 
-        <div className="text-center text-white">
+        
 
-Already have an  account? <Link to="/login" className='underline'>Login</Link>
-</div>
-        </Form>
-        <br />
-        <div className="text-center">
-<Link to="/">
-          <Button 
-            type="primary"
-            className="!bg-[#C84E31] px-5   !text-white !border-2  !rounded-full hover:!bg-[#C84E31]/90"
+          <div className="text-center text-white">
+            Already have an account? <Link to="/login" className='underline'>Login</Link>
+          </div>
+          </div>
+          <br />
+          <Form.Item>
+            <Button 
+              type="primary"
+              htmlType="submit"
+              className="!bg-[#C84E31] px-5 w-full !text-white !border-2 !rounded-full hover:!bg-[#C84E31]/90"
+              loading={loading}
             >
-            S'inscrire
-          </Button>
-</Link>
-              </div>
+              {t('common.register')}
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );

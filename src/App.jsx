@@ -1,6 +1,7 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ConfigProvider, Spin } from 'antd';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -10,28 +11,83 @@ import Profile from './pages/Profile.jsx';
 import Announcements from './pages/Announcements.jsx';
 import Chat from './pages/Chat.jsx';
 import GroupChat from './pages/GroupChat.jsx';
+import ProtectedRoute, { PublicRoute } from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext.jsx';
+// import { AuthProvider } from './context/AuthContext.js';
 
 function App() {
   return (
     <ConfigProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route  path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="announcements" element={<Announcements />} />
-            <Route path="chat" element={<Chat />} />
-            <Route path="group-chat" element={<GroupChat />} />
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+              <Route 
+                path="login" 
+                element={
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                } 
+              />
+              <Route 
+                path="register" 
+                element={
+                  <PublicRoute>
+                    <Register />
+                  </PublicRoute>
+                } 
+              />
+            <Route path="/" element={<MainLayout />}>
+              {/* Public Routes */}
 
+              {/* Protected Routes */}
+              <Route 
+                path="/" 
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="profile" 
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="announcements" 
+                element={
+                  <ProtectedRoute>
+                    <Announcements />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="chat" 
+                element={
+                  <ProtectedRoute>
+                    <Chat />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="group-chat" 
+                element={
+                  <ProtectedRoute>
+                    <GroupChat />
+                  </ProtectedRoute>
+                } 
+              />
 
-
-            
-            <Route  path="/" element={<Home />} />
-            <Route path="*" element={<Login />} /> {/* This catches all unmatched routes */}
-          </Route>
-        </Routes>
-      </BrowserRouter>
+              {/* Fallback route */}
+              <Route path="*" element={<Navigate to="/login" replace />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </ConfigProvider>
   );
 }
