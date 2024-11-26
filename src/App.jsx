@@ -20,6 +20,7 @@ import {
 } from "./pages/PublishAnnouncement.jsx";
 import AddDetails from "./pages/AddDetails.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
+import Contact from "./pages/Contact.jsx";
 // import { AuthProvider } from './context/AuthContext.js';
 
 function App() {
@@ -47,6 +48,14 @@ function App() {
                   </PublicRoute>
                 }
               />
+              <Route
+                path="contact"
+                element={
+                  // <PublicRoute>
+                    <Contact />
+                  // </PublicRoute>
+                }
+              />
 
               <Route
                 path="register"
@@ -56,15 +65,12 @@ function App() {
                   </PublicRoute>
                 }
               />
-              {/* Public Routes */}
-
-              {/* Protected Routes */}
               <Route
                 path="/"
                 element={
-                  <PublicRoute>
+                  // <PublicRoute>
                     <Home />
-                  </PublicRoute>
+                  // </PublicRoute>
                 }
               />
               <Route

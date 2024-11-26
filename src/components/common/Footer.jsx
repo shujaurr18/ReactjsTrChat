@@ -56,6 +56,10 @@ const Footer = () => {
         <div>
           <h3 className="text-white mb-4">{t('footer.menu')}</h3>
           <ul className="space-y-2">
+          <Link to="/contact" className="text-gray-400 hover:text-primary">
+                {/* {t('footer.terms')} */}
+                Contact
+              </Link>
             <li>
               <Link to="/terms" className="text-gray-400 hover:text-primary">
                 {t('footer.terms')}
