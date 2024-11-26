@@ -11,7 +11,6 @@ const MainLayout = () => {
 
   return (
     <Layout className="min-h-screen">
-      {/* {!isAuthPage && <Header />} */}
       <Header />
       <Layout.Content>
         <Outlet />
