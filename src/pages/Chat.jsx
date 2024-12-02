@@ -9,7 +9,8 @@ const Chat = () => {
   const [showUserList, setShowUserList] = useState(true);
 
   const ChatUserItem = ({ user, location, online, unreadCount }) => (
-    <div className="flex items-center gap-2 md:gap-3 p-2 hover:bg-gray-50 cursor-pointer">
+    <div className="flex items-center gap-2 md:gap-3 p-2 hover:bg-gray-50 cursor-pointer"
+         onClick={() => setShowUserList(false)}>
       <div className="relative">
         <Avatar src="/api/placeholder/40/40" className="w-8 h-8 md:w-10 md:h-10" />
         {online && (
@@ -46,7 +47,6 @@ const Chat = () => {
   return (
     <div className="p-2 md:p-4 py-10 md:py-20 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4 md:mb-8">
-        {/* Profile Section */}
         <div className="w-full md:w-auto">
           <div className="flex items-center mt-16 gap-2 md:gap-4 bg-white p-2 md:p-3 rounded-xl pr-4 md:pr-14">
             <div className="w-24 md:w-32 h-12 md:h-16 relative top-[-40px] md:top-[-60px]">
@@ -66,9 +66,7 @@ const Chat = () => {
           </div>
         </div>
 
-        {/* Chat Section */}
         <div className="bg-white rounded-2xl w-full mx-auto h-[calc(100vh-200px)] md:h-screen flex flex-col md:flex-row p-2 md:p-4">
-          {/* User List */}
           <div className={`w-full md:w-80 border-r bg-white flex flex-col ${!showUserList && 'hidden md:flex'}`}>
             <div className="flex border-b">
               <button className="flex-1 py-2 px-4 text-sm md:text-base font-medium text-[#C84E31] border-b-2 border-[#C84E31]">
@@ -80,7 +78,6 @@ const Chat = () => {
             </div>
 
             <div className="flex-grow overflow-y-auto">
-              {/* User list items */}
               {[
                 { user: 'Marine22', location: 'Salut, salut !', unreadCount: 2 },
                 { user: 'Amandine32', location: 'Salut !', unreadCount: 1 },
@@ -99,7 +96,6 @@ const Chat = () => {
             </div>
           </div>
 
-          {/* Chat Area */}
           <div className={`flex-grow flex flex-col bg-gray-50 ${showUserList && 'hidden md:flex'}`}>
             <div className="p-2 md:p-4 bg-white border-b flex justify-between items-center">
               <div className="flex items-center gap-2 md:gap-3">
@@ -117,9 +113,7 @@ const Chat = () => {
             </div>
 
             <div className="flex-grow overflow-y-auto p-2 md:p-4">
-              {/* Messages */}
               <div className="space-y-4">
-                {/* Sent message */}
                 <div className="flex justify-end mb-4">
                   <div className="message-content">
                     <span className="text-xs text-gray-400 block mb-1 text-right">4 mai 15:56</span>
@@ -128,7 +122,6 @@ const Chat = () => {
                     </div>
                   </div>
                 </div>
-                {/* Received message */}
                 <div className="flex justify-start mb-4">
                   <div className="message-content">
                     <span className="text-xs text-gray-400 block mb-1">15:56</span>
@@ -140,7 +133,6 @@ const Chat = () => {
               </div>
             </div>
 
-            {/* Input Area */}
             <div className="p-2 md:p-4 bg-white border-t">
               <div className="flex gap-2">
                 <Input.TextArea 

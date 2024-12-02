@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Avatar, Badge, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import bgImage from '@/assets/bgimage.png';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 const GroupChat = () => {
   const { t } = useTranslation();
+  const [showUserList, setShowUserList] = useState(true);
 
   const ChatUserItem = ({ user, location, online, unreadCount }) => (
-    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 cursor-pointer">
+    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 cursor-pointer"
+         onClick={() => setShowUserList(false)}>
       <div className="relative">
         <Avatar src="/api/placeholder/40/40" className="w-10 h-10" />
         {online && (
@@ -35,8 +38,12 @@ const GroupChat = () => {
       )}
     </div>
   );
+
   const GroupChatTitle = ({ title, selected }) => (
-    <div className={`p-3 rounded-lg mb-2 cursor-pointer ${selected ? 'bg-gray-300 border border-[#C84E31] text-[#C84E31]' : 'bg-white'}`}>
+    <div 
+      className={`p-3 rounded-lg mb-2 cursor-pointer ${selected ? 'bg-gray-300 border border-[#C84E31] text-[#C84E31]' : 'bg-white'}`}
+      onClick={() => setShowUserList(false)}
+    >
       <p className="text-sm">{title}</p>
     </div>
   );
@@ -44,14 +51,10 @@ const GroupChat = () => {
   return (
     <div className="p-2 md:p-4 py-10 md:py-20 max-w-7xl mx-auto relative">
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4 md:mb-8">
-      <div className="w-full md:w-auto">
-      <div className="flex items-center mt-16 gap-2 md:gap-4 bg-white p-2 md:p-3 rounded-xl pr-4 md:pr-14">
-      <div className="w-32 h-16 relative top-[-60px]">
-              <img
-                src={bgImage}
-                alt="Profile"
-                className="rounded-2xl h-32 w-32 object-cover"
-              />
+        <div className="w-full md:w-auto">
+          <div className="flex items-center mt-16 gap-2 md:gap-4 bg-white p-2 md:p-3 rounded-xl pr-4 md:pr-14">
+            <div className="w-32 h-16 relative top-[-60px]">
+              <img src={bgImage} alt="Profile" className="rounded-2xl h-32 w-32 object-cover" />
             </div>
             <div>
               <p className="text-primary">Premium</p>
@@ -62,7 +65,7 @@ const GroupChat = () => {
             </div>
           </div>
           <br />
-          <div className="space-y-2 md:space-y-4 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0">
+          <div className={`space-y-2 md:space-y-4 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0 ${!showUserList && 'hidden md:grid'}`}>
             <GroupChatTitle title="Group chat title" selected={true} />
             <GroupChatTitle title="Group chat title" />
             <GroupChatTitle title="Group chat title" />
@@ -71,8 +74,8 @@ const GroupChat = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl w-full mx-auto  md:h-screen flex flex-col md:flex-row p-2 md:p-4">
-          <div className="w-80 border-r bg-white flex flex-col">
+        <div className="bg-white rounded-2xl w-full mx-auto md:h-screen flex flex-col md:flex-row p-2 md:p-4">
+          <div className={`w-full md:w-80 border-r bg-white flex flex-col ${!showUserList && 'hidden md:flex'}`}>
             <div className="flex border-b">
               <button className="flex-1 py-2 px-4 font-medium text-[#C84E31] border-b-2 border-[#C84E31]">
                 {t('chat.all')}
@@ -101,8 +104,8 @@ const GroupChat = () => {
             </div>
           </div>
 
-          <div className="flex-grow flex flex-col bg-gray-50">
-            <div className="p-4 bg-white border-b">
+          <div className={`flex-grow flex flex-col bg-gray-50 ${showUserList && 'hidden md:flex'}`}>
+            <div className="p-4 bg-white border-b flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <Avatar src="/api/placeholder/40/40" />
                 <div>
@@ -110,6 +113,11 @@ const GroupChat = () => {
                   <p className="text-sm text-gray-500">En ligne</p>
                 </div>
               </div>
+              <Button 
+                className="md:hidden" 
+                onClick={() => setShowUserList(true)}
+                icon={<ArrowLeftOutlined />}
+              />
             </div>
 
             <div className="flex-grow overflow-y-auto p-4">

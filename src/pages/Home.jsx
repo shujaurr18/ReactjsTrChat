@@ -8,15 +8,25 @@ import { HeartFilled, MessageFilled } from '@ant-design/icons';
 const Home = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const testimonials = [1, 2, 3];
+  const testimonials = [1, 2, 3,4, 5, 6];
+  const carouselRef = React.useRef(null);
 
-  const settings = {
+ 
+  const handleDotClick = (index) => {
+    if (carouselRef.current) {
+      carouselRef.current.goTo(index);
+      setCurrentSlide(index);
+    }
+  };
+  const carouselSettings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (current, next) => setCurrentSlide(next),
+    autoplay: true,
+    autoplaySpeed: 3000,
+    afterChange: (current) => setCurrentSlide(current),
     responsive: [
       {
         breakpoint: 1024,
@@ -27,7 +37,6 @@ const Home = () => {
       }
     ]
   };
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -195,40 +204,40 @@ const Home = () => {
           <div className="absolute bottom-4 md:bottom-8 lg:bottom-12 left-0 right-0 px-4">
             <div className="max-w-6xl mx-auto">
            
-            <Carousel {...settings}>
-        {testimonials.map((item) => (
-          <div key={item} className="px-4">
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center">
-              <div className="bg-black/80 backdrop-blur text-white rounded-2xl p-4 md:p-6 w-full md:w-[400px] mx-auto">
-                <div className="flex items-center gap-3 mb-3">
-                  <img 
-                    src={bgImagecontact}
-                    alt="User"
-                    className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="text-[#C84E31] font-medium text-sm md:text-base">Florine R</h4>
-                    <p className="text-xs md:text-sm text-gray-300">Femme, 28 ans, Bordeaux</p>
+            <Carousel ref={carouselRef} {...carouselSettings}>
+                {testimonials.map((item) => (
+                  <div key={item} className="px-4">
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center">
+                      <div className="bg-black/80 backdrop-blur text-white rounded-2xl p-4 md:p-6 w-full md:w-[400px] mx-auto">
+                        <div className="flex items-center gap-3 mb-3">
+                          <img 
+                            src={bgImagecontact}
+                            alt="User"
+                            className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover"
+                          />
+                          <div>
+                            <h4 className="text-[#C84E31] font-medium text-sm md:text-base">Florine R</h4>
+                            <p className="text-xs md:text-sm text-gray-300">Femme, 28 ans, Bordeaux</p>
+                          </div>
+                        </div>
+                        <p className="text-xs md:text-sm text-gray-300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <p className="text-xs md:text-sm text-gray-300">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </Carousel>
+                ))}
+              </Carousel>
               <div className="flex justify-center gap-2 mt-4 md:mt-6">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => settings.goTo(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              currentSlide === index ? 'bg-white' : 'bg-white/50'
-            }`}
-          />
-        ))}
+              {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleDotClick(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? 'bg-white' : 'bg-white/50'
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>

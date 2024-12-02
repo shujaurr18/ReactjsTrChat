@@ -10,40 +10,90 @@ const Header = () => {
   const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const NavButtons = () => (
+  const NavButtons = ({ isMobile = false }) => (
     <>
       {user ? (
         <>
-          <Link className=' w-full' to="/announcements">
-            <Button className="!bg-[#C84E31] h-8 px-4 text-white hover:!bg-[#C84E31]/90 border-none">
+          <Link 
+            className={`${isMobile ? 'w-full block' : ''}`} 
+            to="/announcements"
+            onClick={()=>{
+              setMobileMenuOpe(false)
+            }}
+            
+          >
+            <Button 
+              className={`!bg-[#C84E31] h-8 px-4 text-white hover:!bg-[#C84E31]/90 border-none ${isMobile ? 'w-full' : ''}`}
+            >
               {t('common.announcements')}
             </Button>
           </Link>
-          <Link to="/chat">
-            <Button className="!bg-[#C84E31] h-8 px-12 text-white hover:!bg-[#C84E31]/90 border-none">
+          <Link 
+            className={`${isMobile ? 'w-full block' : ''}`} 
+            to="/chat"
+            onClick={()=>{
+              setMobileMenuOpe(false)
+            }}
+          >
+            <Button 
+              className={`!bg-[#C84E31] h-8 ${isMobile ? 'w-full px-4' : 'px-12'} text-white hover:!bg-[#C84E31]/90 border-none`}
+              
+            >
               {t('common.chat')}
             </Button>
           </Link>
-          <Link to="/group-chat">
-            <Button className="!bg-[#C84E31] h-8 text-white hover:!bg-[#C84E31]/90 border-none">
+          <Link 
+            className={`${isMobile ? 'w-full block' : ''}`} 
+            to="/group-chat"
+            onClick={()=>{
+              setMobileMenuOpe(false)
+            }}
+          >
+            <Button 
+              className={`!bg-[#C84E31] h-8 text-white hover:!bg-[#C84E31]/90 border-none ${isMobile ? 'w-full' : ''}`}
+            >
               {t('common.discussionRooms')}
             </Button>
           </Link>
-          <Link to="/profile">
-            <Button className="bg-white hover:bg-gray-50 px-12 h-8">
+          <Link 
+            className={`${isMobile ? 'w-full block' : ''}`} 
+            to="/profile"
+            onClick={()=>{
+              setMobileMenuOpe(false)
+            }}
+          >
+            <Button 
+              className={`bg-white hover:bg-gray-50 ${isMobile ? 'w-full' : 'px-12'} h-8`}
+            >
               {t('common.profile')}
             </Button>
           </Link>
         </>
       ) : (
         <>
-          <Link to="/login">
-            <Button className="bg-white text-black hover:bg-gray-50 px-12 h-8">
+          <Link 
+            className={`${isMobile ? 'w-full block' : ''}`} 
+            to="/login"
+            onClick={()=>{
+              setMobileMenuOpe(false)
+            }}
+          >
+            <Button 
+              className={`bg-white text-black hover:bg-gray-50 ${isMobile ? 'w-full' : 'px-12'} h-8`}
+            >
               {t('common.login')}
             </Button>
           </Link>
-          <Link to="/register">
-            <Button className="!bg-[#C84E31] h-8 px-12 text-white hover:!bg-[#C84E31]/90 border-none">
+          <Link 
+            className={`${isMobile ? 'w-full block' : ''}`} 
+            to="/register"
+            onClick={()=>{
+              setMobileMenuOpe(false)
+            }}
+          >
+            <Button 
+              className={`!bg-[#C84E31] h-8 ${isMobile ? 'w-full' : 'px-12'} text-white hover:!bg-[#C84E31]/90 border-none`}
+            >
               {'Inscription'}
             </Button>
           </Link>
@@ -54,7 +104,7 @@ const Header = () => {
 
   const MobileMenu = () => (
     <div className="flex flex-col gap-4 p-4">
-      <NavButtons />
+      <NavButtons isMobile={true} />
     </div>
   );
 
@@ -79,7 +129,7 @@ const Header = () => {
         />
 
         <Drawer
-          title="Menu"
+          title=""
           placement="right"
           onClose={() => setMobileMenuOpen(false)}
           open={mobileMenuOpen}

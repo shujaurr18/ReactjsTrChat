@@ -8,11 +8,11 @@ const AddDetails = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="  mx-auto space-y-8">
-        <div className=" rounded-xl shadow-sm p-6">
+        <div className=" rounded-xl shadow-sm p-6 pt-0">
           <div className="flex flex-col lg:flex-row gap-6">
-            <div className="flex items-start gap-4 lg:w-1/3">
-              <div className=" p-4 rounded-xl shadow-sm">
-                <div className="flex items-center gap-4">
+            <div className="flex items-start gap-4  lg:w-1/3">
+              <div className=" p-4 pt-0 rounded-xl shadow-sm">
+                <div className="flex items-center ">
                
                
                 <div className="flex items-center mt-16 gap-4 bg-white p-3 rounded-xl pr-14">
@@ -36,12 +36,9 @@ const AddDetails = () => {
               </div>
             </div>
             
-            <div className="lg:w-2/3">
+            <div className="lg:w-2/3  ">
               <p className="text-gray-600">
-                <br />
-                <br />
-                <br />
-                <br />
+             <div className='md:mt-24 mt-0 '></div>
 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                 sed do eiusmod tempor incididunt ut labore et dolore 
